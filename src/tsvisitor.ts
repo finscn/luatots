@@ -394,7 +394,8 @@ export class TsVisitor implements LuaVisitor<void> {
             const exp = ctx.tryGetChild(i, ExpContext);
             if (!exp) break;
             if (!first) this.result += ", ";
-            if (needList && exp.text === "self") continue;
+            // 显式 self 是实参，必须正常转换为 this；冒号调用的隐式接收者不在参数列表中。
+            // if (needList && exp.text === "self") continue;
             exp.accept(this);
             first = false;
         }
