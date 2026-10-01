@@ -454,7 +454,9 @@ export class TsVisitor implements LuaVisitor<void> {
     visitLaststat(ctx: LaststatContext) {
         this.writeTabs();
         const explist1 = ctx.tryGetChild(0, Explist1Context);
-        if (explist1) {
+        if (ctx.getChild(0).text === "break") {
+            this.result += "break;\n";
+        } else if (explist1) {
             this.result += "return ";
             explist1.accept(this);
             this.result += ";\n";

@@ -130,7 +130,7 @@ end`),
         `import globals from "./globals";
 if (globals.comboEvent.reason == "Anticipation") {
     globals.state.RemoveAuraOnGUID(globals.self_playerGUID, globals.ANTICIPATION, "HELPFUL", true, globals.comboEvent.atTime);
-    return;
+    break;
 }
 `
     );
