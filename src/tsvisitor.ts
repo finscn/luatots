@@ -176,6 +176,8 @@ export class TsVisitor implements LuaVisitor<void> {
     visitNumber(ctx: NumberContext): void {
         if (ctx.INT()) {
             this.result += ctx.INT().symbol.text;
+        } else if (ctx.HEX()) {
+            this.result += ctx.HEX().symbol.text;
         } else if (ctx.FLOAT()) {
             this.result += ctx.FLOAT().symbol.text;
         }
